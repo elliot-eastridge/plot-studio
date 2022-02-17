@@ -1,0 +1,41 @@
+{
+  "name": "studio",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --mode development --open --hot",
+    "lint": "eslint \"src/**/*.{js,jsx}\"",
+    "prettier": "prettier --write \"src/**/*.{js,jsx, json}\""
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-transform-runtime": "^7.16.10",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "eslint": "^7.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-react": "^7.28.0",
+    "prettier": "^2.5.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.16.7",
+    "canvg": "^3.0.9",
+    "d3-scale": "^4.0.2",
+    "d3-shape": "^3.1.0",
+    "file-saver": "^2.0.5",
+    "lodash": "^4.17.21",
+    "prop-types": "^15.8.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "seedrandom": "^3.0.5",
+    "simplex-noise": "^3.0.1",
+    "styled-components": "^5.3.3"
+  }
+}

@@ -1,1 +1,1 @@
-# plot-studio
+# studio
