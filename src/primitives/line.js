@@ -11,7 +11,7 @@ const Line = (props) => {
 
   const pathFunction = d3Shape
     .line()
-    .curve(d3Shape.curveNatural)
+    .curve(d3Shape.curveBasisClosed)
     .x((d) => scale.x(d.x))
     .y((d) => scale.y(d.y));
 

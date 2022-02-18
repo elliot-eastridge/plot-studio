@@ -5,24 +5,29 @@ import PngSaveButton from "../ui/png-save-button";
 import { getLissajousData } from "../utils/data";
 import Line from "../primitives/line";
 import { getRange } from "../utils/helpers";
-import { range, random } from "lodash";
+import { range } from "lodash";
 
 const Wrapper = styled.div`
   padding: 40px 40px;
 `;
 
-const xDim = 960;
-const yDim = 720;
-const xPadding = 65;
-const yPadding = 150
+const xDim = 1200;
+const yDim = 900;
+const domain = {x: [-1, 1], y: [-1, 1]};
+const D = Math.random() * Math.PI * 2;
+const a = Math.random() * 10;
+const samples = 50;
+const xOffset = 4;
+const yOffset = 3;
+const basePadding = 40;
+const xPadding = [basePadding, samples * xOffset + basePadding];
+const yPadding = [basePadding, samples * yOffset + basePadding];
 
 const Lines = () => {
 
   const svgRef = React.useRef();
   const svgRange = getRange(xDim, yDim, xPadding, yPadding);
-  const domain = {x: [-1, 1], y: [-1, 1]};
-  const D = Math.random() * Math.PI * 2;
-  const a = Math.random() * 10;
+
   return (
     <Wrapper>
       <svg
@@ -30,22 +35,20 @@ const Lines = () => {
         ref={svgRef}
         viewBox={`0 0 ${xDim} ${yDim}`}
         width={xDim}
-        height={xDim}
-        style={{ width: "100%", background: "white" }}
+        height={yDim}
+        style={{ background: "white" }}
       >
-      <g transform="translate(-120 -100)">
-        {range(0, 50, 1).map((i) => {
+        {range(0, samples, 1).map((i) => {
           return (
               <Line
                 key={i}
                 range={svgRange}
                 domain={domain}
                 data={getLissajousData({ a, D })}
-                transform={`translate(${i * 5} ${i * 4 })`}
+                transform={`translate(${(i - 1) * xOffset} ${(i - 1) * yOffset })`}
               />
             );
         })}
-      </g>
       </svg>
       <SaveButton ref={svgRef} fileName={`lissajous-a${a}-D-${D}-${Date.now()}`}/>
       <PngSaveButton ref={svgRef} fileName={`lissajous-a${a}-D-${D}-${Date.now()}`}/>

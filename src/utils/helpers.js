@@ -2,8 +2,8 @@ import { maxBy, minBy } from "lodash";
 import { scaleLinear as scale } from "d3-scale";
 
 const getRange = (xDim, yDim, xPadding, yPadding) => {
-  const x = [xPadding, xDim - xPadding];
-  const y = [yPadding, yDim - yPadding];
+  const x = [xPadding[0], xDim - xPadding[1]];
+  const y = [yPadding[0], yDim - yPadding[1]];
   return { x, y };
 }
 
