@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import * as d3Shape from "d3-shape";
 import { getDomainFromData, getScale } from "../utils/helpers";
+import { linearizePath } from "../utils/path-helpers";
 
 const Line = (props) => {
   const { data, range, style = {}, transform } = props;
@@ -19,7 +20,7 @@ const Line = (props) => {
   const lineStyle = Object.assign({}, defaultStyle, style);
 
   return (
-    <path d={pathFunction(data)} style={lineStyle} transform={transform} />
+    <path d={linearizePath(pathFunction(data))} style={lineStyle} transform={transform} />
   );
 };
 

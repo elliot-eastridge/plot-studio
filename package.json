@@ -31,11 +31,13 @@
     "d3-shape": "^3.1.0",
     "file-saver": "^2.0.5",
     "lodash": "^4.17.21",
+    "points-on-curve": "^1.0.0",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "seedrandom": "^3.0.5",
     "simplex-noise": "^3.0.1",
-    "styled-components": "^5.3.3"
+    "styled-components": "^5.3.3",
+    "svg-path-commander": "^0.1.25"
   }
 }
