@@ -1,8 +1,7 @@
 module.exports = {
   entry: "./src/index",
   output: {
-    filename: "bundle.js",
-    publicPath: "/"
+    filename: "bundle.js"
   },
   module: {
     rules: [
@@ -12,8 +11,5 @@ module.exports = {
         loader: "babel-loader"
       }
     ]
-  },
-  devServer: {
-    historyApiFallback: true,
   }
 };
