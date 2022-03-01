@@ -1,25 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import { saveAs } from "file-saver";
-
-const Wrapper = styled.div`
-  padding: 40px 40px;
-`;
+import { Button } from "grommet";
 
 const SaveButton = React.forwardRef((props, ref) => {
   const handleDownload = () => {
-    const element = ref.current;
+    const element = ref.current.cloneNode(true);
+    const viewBoxStr = element.getAttribute("viewBox");
+    if (viewBoxStr) {
+      const viewBox = viewBoxStr.split(" ");
+      element.setAttribute("width", viewBox[2]);
+      element.setAttribute("height", viewBox[3]);
+    }
     const serializer = new XMLSerializer();
     const str = serializer.serializeToString(element);
-    const svgBlob = new Blob([str], {type: "image/svg+xml"})
+    const svgBlob = new Blob([str], {type: "image/svg+xml"});
     saveAs(svgBlob, `${props.fileName || "test"}.svg`);
   }
 
   return (
-    <Wrapper>
-      <button onClick={handleDownload}>Download</button>
-    </Wrapper>
+      <Button size="medium" onClick={handleDownload} label="Download" margin={{ top: "large" }}/>
   );
 });
 

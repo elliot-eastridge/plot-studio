@@ -9,7 +9,6 @@ const Home = () => {
         <Link to="/lissajous">Lissajous!</Link> |{' '}
         <Link to="/test">scratch pad</Link>
       </nav>
-      <Outlet />
     </div>
   );
 };
