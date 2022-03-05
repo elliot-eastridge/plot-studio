@@ -6,12 +6,17 @@ import { Button } from "grommet";
 const SaveButton = React.forwardRef((props, ref) => {
   const handleDownload = () => {
     const element = ref.current.cloneNode(true);
+    const style = getComputedStyle(document.documentElement);
     const viewBoxStr = element.getAttribute("viewBox");
     if (viewBoxStr) {
       const viewBox = viewBoxStr.split(" ");
       element.setAttribute("width", viewBox[2]);
       element.setAttribute("height", viewBox[3]);
     }
+    element.setAttribute(
+      "style",
+      `background: ${style.getPropertyValue("--background")};`
+    );
     const serializer = new XMLSerializer();
     const str = serializer.serializeToString(element);
     const svgBlob = new Blob([str], {type: "image/svg+xml"});
@@ -19,7 +24,7 @@ const SaveButton = React.forwardRef((props, ref) => {
   }
 
   return (
-      <Button size="medium" onClick={handleDownload} label="Download" margin={{ top: "large" }}/>
+      <Button size="medium" onClick={handleDownload} label="Download!" margin={{ top: "large" }}/>
   );
 });
 
