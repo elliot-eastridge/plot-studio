@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
-import { RangeInput, Heading, Button } from "grommet";
+import { Heading, Button } from "grommet";
+import { Range } from "../components/slider";
 import { PadBox, Split, Stack } from "@bedrock-layout/primitives";
 import { random } from "lodash";
-import SaveButton from "../ui/save-button";
+import SaveButton from "../components/save-button";
 import Lines from "./lissajous-svg";
 import { ThemeContext } from "../context";
 
@@ -16,19 +17,13 @@ import { ThemeContext } from "../context";
 // const basePadding = 40;
 
 const CustomRange = props => {
-  const { value, min, max, step, onChange, title } = props;
+  const { title, ...rest } = props;
   return (
     <div>
     <Heading level="5" size="small" alignSelf="center" margin={{bottom: "none"}}>
       {title}
     </Heading>
-    <RangeInput
-      step={step}
-      min={min}
-      max={max}
-      value={value}
-      onChange={e => onChange(+e.currentTarget.value)}
-    />
+    <Range {...rest} />
     </div>
 
   );
@@ -38,7 +33,7 @@ const BackgroundButton = () => {
   const {setBackground} = React.useContext(ThemeContext);
 
   const changeColor = () => {
-    const colors = ["orange", "tomato", "gold", "blue", "green"];
+    const colors = ["orange", "tomato", "gold", "deepSkyBlue", "YellowGreen", "hotPink", "lightSeaGreen", "orchid", "salmon", "yellow"];
     const newColor = colors[random(colors.length - 1)];
     document.documentElement.style.setProperty(
       '--background',
@@ -166,7 +161,7 @@ const Lissajous= () => {
             value={xOffset}
             min={0}
             max={15}
-            step={1}
+            step={0.1}
             onChange={setXOffset}
           />
           <CustomRange
@@ -174,7 +169,7 @@ const Lissajous= () => {
             value={yOffset}
             min={0}
             max={15}
-            step={1}
+            step={0.1}
             onChange={setYOffset}
           />
           <Stack style={{ marginTop: "20px" }}>
